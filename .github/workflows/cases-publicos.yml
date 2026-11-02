@@ -1,0 +1,50 @@
+name: Atualizar vitrine de projetos
+on:
+  push:
+    paths:
+      - .github/workflows/cases-publicos.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Corrigir links e criar cases
+        run: |
+          python3 -c '
+          from pathlib import Path
+          p=Path("index.html")
+          s=p.read_text(encoding="utf-8")
+          L=chr(60)
+          R=chr(62)
+          replacements={
+            "https://github.com/jaquelineamaro93-hue/radar-crm-dashboard":"#case-conexao",
+            "https://github.com/jaquelineamaro93-hue/mentoria":"#case-soma",
+            "https://conexaocrm.com/":"#case-conexao",
+            "https://somamentoria.com/":"#case-soma",
+            "Código e documentação":"Estudo de caso",
+            "Acessar projeto":"Conhecer case",
+          }
+          for old,new in replacements.items():
+            s=s.replace(old,new)
+          s=s.replace(L+" av"+R,L+"nav"+R)
+          s=s.replace(chr(38)+"amp; bsp;","")
+          s=s.replace("href=\"https://github.com/jaquelineamaro93-hue\"","href=\"https://github.com/jaquelineamaro93-hue/portfolio\"")
+          s=s.replace("grid-template-columns:1fr 1fr;gap:20px","grid-template-columns:repeat(3,minmax(0,1fr));gap:20px")
+          to_html=lambda t:t.replace("[",L).replace("]",R)
+          card=to_html("""[article class="card"][h2]Cases de CRM e CX[/h2][p]Experiencias profissionais de relacionamento, dados e fidelizacao, incluindo Volvo Cars, CredPago e Lahza Foods.[/p][p][strong]Meu trabalho:[/strong] estrategia de CRM, lifecycle, experiencia do cliente e resultados de negocio.[/p][a class="btn" href="https://jaquelineamarocrm.lovable.app/" target="_blank" rel="noopener noreferrer"]Conhecer meus cases profissionais[/a][/article]""")
+ case1=to_html("""[section id="case-conexao"][h2]Case: Conexao CRM[/h2][p][strong]Desafio:[/strong] centralizar oportunidades, profissionais e conteudos de CRM, CX e CS em uma comunidade digital.[/p][p][strong]Meu papel:[/strong] estrategia de produto, jornadas, comunidade, growth, documentacao, testes e melhorias.[/p][p][strong]Decisoes:[/strong] organizar perfis profissionais, radar de vagas, filtros e experiencias de match assistido por IA.[/p][p]Esta vitrine documenta o processo sem divulgar codigo, dados pessoais nem configuracoes internas. Detalhes tecnicos podem ser discutidos em entrevista.[/p][/section]""")
+ case2=to_html("""[section id="case-soma"][h2]Case: SOMA Mentoria[/h2][p][strong]Desafio:[/strong] transformar desenvolvimento de carreira em uma jornada continua e aplicavel.[/p][p][strong]Meu papel:[/strong] concepcao de produto, onboarding, PDI, trilhas de aprendizagem, comunicacao e experiencia.[/p][p][strong]Decisoes:[/strong] integrar aprendizagem em pequenas etapas, acompanhamento e ferramentas de carreira.[/p][p]Esta vitrine documenta a experiencia de produto sem expor codigo da plataforma ou informacoes dos mentorados. Detalhes tecnicos podem ser discutidos em entrevista.[/p][/section]""")
+ marker=L+"/div"+R+L+"/section"+R+L+"section id=\"sobre\""+R
+          if "jaquelineamarocrm.lovable.app" not in s and marker in s:
+            s=s.replace(marker,card+L+"/div"+R+L+"/section"+R+case1+case2+L+"section id=\"sobre\""+R)
+ p.write_text(s,encoding="utf-8")
+          '
+      - name: Publicar revisao
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add index.html
+          git diff --cached --quiet || (git commit -m "Portfolio com tres cases e links independentes" && git push)
