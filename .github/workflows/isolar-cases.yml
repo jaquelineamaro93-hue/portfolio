@@ -1,0 +1,47 @@
+name: Isolar cases do portfolio
+on:
+  push:
+    paths:
+      - .github/workflows/isolar-cases.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Corrigir navegacao e links
+        run: |
+          python3 - &lt;&lt;'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          replacements = {
+            'https://github.com/jaquelineamaro93-hue/radar-crm-dashboard': '#conexao-case',
+            'https://github.com/jaquelineamaro93-hue/mentoria': '#soma-case',
+            'https://conexaocrm.com/': '#conexao-case',
+            'https://somamentoria.com/': '#soma-case',
+            '&gt;Codigo e documentacao': '&gt;Estudo de caso',
+            '&gt;Código e documentação': '&gt;Estudo de caso',
+            '&gt;Acessar projeto': '&gt;Conhecer o case',
+            '&lt; av&gt;': '&lt;nav&gt;',
+            '&amp; bsp;': ' ',
+          }
+          for a,b in replacements.items():
+            s=s.replace(a,b)
+          case1 = '&lt;section id="conexao-case"&gt;&lt;h2&gt;Case 01: Conexão CRM&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;O desafio:&lt;/strong&gt; reunir profissionais, oportunidades e conhecimento de CRM, CX e CS em uma experiência organizada.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Meu papel:&lt;/strong&gt; concepção do produto, arquitetura de informação, comunidades, jornadas, especificação, QA, automação e evolução.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Como construo:&lt;/strong&gt; identificar necessidades, definir hipóteses, priorizar funcionalidades, testar fluxos e documentar aprendizados.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Decisões de produto:&lt;/strong&gt; centralizar perfis Open to Work, radar de oportunidades, conteúdos e recursos de relacionamento; preservar limites de acesso e dados pessoais.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Próximos passos:&lt;/strong&gt; melhorar filtros, clareza das jornadas e acompanhamento de uso.&lt;/p&gt;&lt;p&gt;Este case é um resumo público. Código, dados e detalhes internos permanecem fora do portfólio.&lt;/p&gt;&lt;a href="#projetos"&gt;Voltar aos projetos&lt;/a&gt;&lt;/section&gt;'
+          case2 = '&lt;section id="soma-case"&gt;&lt;h2&gt;Case 02: SOMA Mentoria&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;O desafio:&lt;/strong&gt; transformar orientação de carreira em uma jornada contínua e prática de desenvolvimento.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Meu papel:&lt;/strong&gt; estratégia de produto, proposta de valor, desenho da experiência, trilhas, onboarding, comunicação e melhoria contínua.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Como construo:&lt;/strong&gt; mapear a jornada, estruturar PDI, integrar encontros e conteúdos, observar dificuldades e iterar.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Decisões de produto:&lt;/strong&gt; combinar aprendizado em pequenas etapas, personalização, acompanhamento de progresso e instrumentos de autoconhecimento.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Próximos passos:&lt;/strong&gt; validar engajamento, usabilidade e valor das trilhas.&lt;/p&gt;&lt;p&gt;Este case não divulga código, dados de mentorados nem configurações internas.&lt;/p&gt;&lt;a href="#projetos"&gt;Voltar aos projetos&lt;/a&gt;&lt;/section&gt;'
+          if 'id="conexao-case"' not in s:
+            s=s.replace('&lt;/main&gt;',case1+case2+'&lt;/main&gt;')
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Salvar correcao
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          if ! git diff --cached --quiet; then
+            git commit -m 'portfolio: cases internos e links isolados'
+            git push
+          fi
