@@ -1,44 +1,60 @@
 # Jaqueline Amaro | Portfólio profissional
 
-**CRM · Customer Experience · Growth · Produto digital · IA**
+**CRM · Customer Experience · Growth · Produto Digital · Inteligência Artificial**
 
-[Site](https://www.jaquelineamaro.com.br/) · [LinkedIn](https://www.linkedin.com/in/jaquelineamaro/) · [Trajetória e cases profissionais](https://jaquelineamarocrm.lovable.app/)
+**Site principal:** [www.jaquelineamaro.com.br](https://www.jaquelineamaro.com.br/)
 
-## Propósito
+## Sobre o portfólio
 
-Este repositório é uma vitrine independente que apresenta meu trabalho em estratégia, criação de produtos e experiência do cliente. Meu objetivo é mostrar como transformo problemas reais em hipóteses, decisões, jornadas e soluções digitais, com documentação clara e foco na melhoria contínua.
+Este repositório público é uma vitrine independente de projetos e experiências profissionais. Apresenta **onze estudos de caso** em um único endereço: dois produtos autorais (Conexão CRM e SOMA Mentoria) e nove cases de relacionamento, tecnologia e experiência do cliente originalmente apresentados em meu portfólio profissional no Lovable.
 
-## Estudos de caso
+O objetivo é mostrar a forma como trabalho: investigar problemas, formular hipóteses, definir prioridades, desenhar jornadas, acompanhar a implementação, testar, aprender e evoluir. Não é uma cópia dos repositórios dos produtos.
 
-### Conexão CRM
-**Comunidade, empregabilidade e produto digital.** A proposta nasce da necessidade de reunir pessoas, oportunidades de carreira e conhecimento em CRM, CX e CS. Minha atuação envolve visão de produto, jornada do usuário, priorização, estratégia de crescimento, documentação e qualidade da experiência. O case aborda funcionalidades como diretório de profissionais, radar de vagas e recursos de recomendação assistida por IA.
+## Produtos autorais
 
-### SOMA Mentoria
-**Desenvolvimento de carreira e aprendizagem digital.** A proposta conecta planejamento profissional, trilhas, acompanhamento e aplicação prática. Minha atuação envolve estratégia do produto, onboarding, desenho de jornadas, experiências de aprendizagem, comunicação e evolução da plataforma. O case aborda PDI, microlearning, feedback e recursos de carreira.
+| Produto | Desafio | Meu papel e entregas |
+| --- | --- | --- |
+| **Conexão CRM** | Aproximar profissionais de CRM, CX e CS de comunidade, conhecimento e oportunidades | Estratégia de produto, proposta de valor, jornada, UX, Growth, documentação, comunidade e iniciativas de match com IA |
+| **SOMA Mentoria** | Transformar conteúdo de carreira em desenvolvimento acompanhado e aplicação prática | Concepção, onboarding, PDI, trilhas de aprendizagem, experiências gamificadas, comunicação e evolução de produto |
 
-### Cases profissionais em CRM e CX
-Experiências profissionais e projetos de relacionamento, dados e fidelização estão reunidos em [minha seleção de cases](https://jaquelineamarocrm.lovable.app/).
+## Experiências profissionais
 
-## Método de trabalho
+| Case | Foco | Resultado divulgado no case |
+| --- | --- | --- |
+| Volvo Cars | Jornadas e ativações | NPS acima de 70% em eventos |
+| CredPago | Fidelização e embaixadores | +20% na receita incremental de CRM |
+| Lahza Foods | Estratégia de CRM para lançamento | Estruturação da base de relacionamento |
+| Marvin | Novos canais de CRM | Estruturação de canais e comunicação segmentada |
+| Engage | Retenção e comunidade B2B | Renovação de 70% relatada durante a pandemia |
+| Plurix | Fidelização e campanhas RFV | Reativação de 14% a 20% em campanhas de Black Friday |
+| CASSI | Implementação e adoção de CRM | R$ 350 mil de economia e 73% de adoção nos períodos informados |
+| Gipsyy | CRM mobile e lifecycle | +35% no fluxo de usuários ativos mobile |
+| iCarros | Visualização de dados e onboarding | –30% no tempo de onboarding relatado |
 
-1. **Investigar:** compreender contexto, pessoas, necessidades e indicadores.
-2. **Definir:** formular hipóteses, proposta de valor e critérios de priorização.
-3. **Desenhar:** organizar jornadas, fluxos, requisitos e critérios de aceite.
-4. **Construir e validar:** acompanhar implementação, testes, usabilidade e qualidade.
-5. **Evoluir:** documentar aprendizados, feedbacks e oportunidades de melhoria.
+Os resultados são apresentados conforme os relatos públicos dos casos e seus respectivos contextos, e não representam garantias de performance futura.
 
-## Competências
+## Como trabalho
 
-CRM e Lifecycle · CX e CS · Liderança · Growth · Produto digital · IA aplicada · Jornadas · Analytics · Documentação funcional · QA e melhoria contínua.
+1. **Investigar:** entender problema, jornada, necessidades e objetivos.
+2. **Priorizar:** definir hipóteses, critérios de sucesso e escopo.
+3. **Desenhar:** documentar jornadas, fluxos e requisitos.
+4. **Entregar:** acompanhar implementação, QA, usabilidade e acessibilidade.
+5. **Evoluir:** analisar aprendizados e oportunidades de melhoria.
 
-## Confidencialidade
+## Segurança e confidencialidade
 
-Este repositório contém **somente o portfólio e sua documentação pública**. Os produtos originais não têm seu código-fonte reproduzido aqui. Informações de clientes e mentorados, credenciais, integrações privadas, arquitetura detalhada, políticas internas e dados operacionais não são divulgados. Detalhes técnicos adicionais podem ser discutidos durante entrevistas, respeitando permissões e confidencialidade.
+- **Este é o único repositório vinculado pelo site.** Nenhum link leva aos repositórios dos produtos originais.
+- O código publicado aqui corresponde **somente à apresentação do portfólio** (HTML, CSS e JavaScript próprios).
+- Não são publicados segredos, tokens, credenciais, dados pessoais de clientes ou mentorados, registros internos ou configurações sensíveis.
+- Demonstrações públicas dos aplicativos podem ser visitadas pelos links específicos, quando adequados.
+- Tecnologias e decisões de arquitetura são resumidas em alto nível; aprofundamentos podem ser discutidos em entrevista.
 
-## Como este site foi construído
+## Implementação
 
-HTML e CSS responsivos, publicação independente no GitHub Pages e domínio personalizado. O próprio repositório demonstra como organizo e comunico decisões de produto de modo compreensível para recrutadores, lideranças e equipes técnicas.
+Portfólio estático, responsivo e acessível, publicado no GitHub Pages e servido em domínio personalizado. Os cases estão incorporados diretamente ao HTML do site; **não depende do Lovable para a navegação principal**. Filtros locais organizam a exploração das experiências.
 
-**Contato:** [LinkedIn](https://www.linkedin.com/in/jaquelineamaro/)
+## Contato
+
+[LinkedIn](https://www.linkedin.com/in/jaquelineamaro/) · [Portfólio](https://www.jaquelineamaro.com.br/)
 
 © 2026 Jaqueline Amaro.
