@@ -1,0 +1,25 @@
+name: Reparar HTML do portfolio
+on:
+  push:
+    paths:
+      - .github/workflows/reparar-html.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  reparar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Converter entidades HTML em tags
+        run: |
+          python3 -c "from pathlib import Path; p=Path('index.html'); s=p.read_text(encoding='utf-8'); p.write_text(s.replace(chr(38)+'lt;',chr(60)).replace(chr(38)+'gt;',chr(62)), encoding='utf-8')"
+      - name: Commit da correcao
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          if ! git diff --cached --quiet; then
+            git commit -m 'fix: restaurar tags HTML'
+            git push
+          fi
