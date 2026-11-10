@@ -1,5 +1,5 @@
 
-const CLEAN_SECTIONS={portal:'/',manifesto:'/manifesto/',sobre:'/sobre/',universos:'/universos/',projetos:'/projetos/',impacto:'/impacto/',contato:'/contato/'};
+const CLEAN_SECTIONS={portal:'/',manifesto:'/manifesto/',sobre:'/sobre/',universos:'/universos/',projetos:'/projetos/',impacto:'/impacto/',skills:'/skills/',contato:'/contato/'};
 const ROUTE_SECTIONS=Object.fromEntries(Object.entries(CLEAN_SECTIONS).map(([name,url])=>[url,name]));
 function cleanNavigate(path,record=true){
   if(!record || location.protocol==='file:')return;
@@ -68,7 +68,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(lightboxOpen)clo
 let startX=0,scrollX=0,moved=false;const rail=document.getElementById('projects');rail.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'){startX=e.clientX;scrollX=rail.scrollLeft;moved=false}});rail.addEventListener('pointermove',e=>{if(e.buttons===1&&e.pointerType==='mouse'&&startX){if(Math.abs(e.clientX-startX)>8)moved=true;if(moved)rail.scrollLeft=scrollX-(e.clientX-startX)}});rail.addEventListener('click',e=>{if(moved){e.stopPropagation();e.preventDefault();moved=false}},true);rail.addEventListener('pointerup',()=>setTimeout(()=>{startX=0;moved=false},40));
 window.addEventListener('popstate',()=>setTimeout(applyPageRoute,0));
 
-const NAV_CHAPTERS=[{id:'portal',name:'Início'},{id:'manifesto',name:'Manifesto'},{id:'sobre',name:'Sobre mim'},{id:'universos',name:'Universos'},{id:'projetos',name:'Projetos'},{id:'impacto',name:'Impacto'},{id:'contato',name:'Contato'}];
+const NAV_CHAPTERS=[{id:'portal',name:'Início'},{id:'manifesto',name:'Manifesto'},{id:'sobre',name:'Sobre mim'},{id:'universos',name:'Universos'},{id:'projetos',name:'Projetos'},{id:'impacto',name:'Impacto'},{id:'skills',name:'Skills de IA'},{id:'contato',name:'Contato'}];
 let navIndex=0;function navGo(delta){navIndex=Math.max(0,Math.min(NAV_CHAPTERS.length-1,navIndex+delta));const item=NAV_CHAPTERS[navIndex];goTo(item.id);navUpdate()}function navUpdate(){const n=NAV_CHAPTERS[navIndex];document.getElementById('navLabel').textContent=String(navIndex+1).padStart(2,'0')+' / '+n.name;document.getElementById('navPrev').disabled=navIndex===0;document.getElementById('navNext').disabled=navIndex===NAV_CHAPTERS.length-1;document.getElementById('navPrev').style.opacity=navIndex===0?'.35':'1';document.getElementById('navNext').style.opacity=navIndex===NAV_CHAPTERS.length-1?'.35':'1'}document.getElementById('navPrev').addEventListener('click',()=>navGo(-1));document.getElementById('navNext').addEventListener('click',()=>navGo(1));const navObserver=new IntersectionObserver(entries=>{const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio);if(visible.length){const idx=NAV_CHAPTERS.findIndex(x=>x.id===visible[0].target.id);if(idx>=0){navIndex=idx;navUpdate()}}},{threshold:[.15,.35,.6]});NAV_CHAPTERS.forEach(x=>{const el=document.getElementById(x.id);if(el)navObserver.observe(el)});navUpdate();
 
 setTimeout(applyPageRoute,120);

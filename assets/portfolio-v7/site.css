@@ -12,3 +12,16 @@
 @media(prefers-reduced-motion:reduce){.about-photo,.portal-portrait-link,.volvo-photo-grid img{transition:none!important}}
 
 .chapter-nav{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:70;display:flex;align-items:center;gap:10px;background:#fff8e9f2;border:1px solid #4b342c44;box-shadow:0 12px 45px #0002;border-radius:99px;padding:8px 10px;color:#4b342c}.chapter-nav button{border:0;background:#4b342c;color:#fff8e9;border-radius:99px;min-height:42px;padding:0 18px;font-size:13px;font-weight:700;cursor:pointer}.chapter-nav .chapter-label{min-width:125px;text-align:center;font:600 12px Arial,sans-serif}.chapter-nav button:focus-visible{outline:3px solid #789db5;outline-offset:2px}body:has(.case-layer.open) .chapter-nav,body:has(.menu-modal.open) .chapter-nav,body:has(.lightbox.open) .chapter-nav{display:none}@media(max-width:600px){.chapter-nav{width:calc(100% - 24px);justify-content:space-between;bottom:10px}.chapter-nav button{padding:0 14px}.chapter-nav .chapter-label{min-width:0;font-size:11px}.chapter-nav{padding:6px 8px}.chapter-nav button{min-height:39px;font-size:12px}body{padding-bottom:74px}}.world text{pointer-events:none}
+/* Skills de IA */
+.skills-scene{justify-content:flex-start}
+.skills-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:26px}
+.skill-card{border:1px solid #4b342c33;border-radius:22px;padding:22px;background:#fff9eb;display:flex;flex-direction:column;gap:10px;min-width:0}
+.skill-card h3{font:500 clamp(24px,2.4vw,34px)/1.05 Georgia,serif;letter-spacing:-.04em;margin:0}
+.skill-card p{margin:0;font-size:15px;line-height:1.5;color:var(--ink)}
+.skill-kind{align-self:flex-start;font-size:10px;letter-spacing:.18em;font-weight:800;text-transform:uppercase;background:var(--butter);color:var(--brown);border-radius:99px;padding:6px 10px}
+.skills-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:26px}
+.skills-button{display:inline-flex;align-items:center;gap:8px;background:var(--brown);color:var(--cream);border-radius:99px;padding:15px 22px;text-decoration:none;font-size:13px;font-weight:800}
+.skills-button:focus-visible{outline:3px solid var(--brown);outline-offset:3px}
+.skills-note{font-size:12px;line-height:1.5;color:var(--muted);max-width:520px}
+@media(max-width:1000px){.skills-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.skills-grid{grid-template-columns:1fr}.skill-card{padding:18px}}
