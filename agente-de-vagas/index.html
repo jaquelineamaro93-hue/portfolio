@@ -131,6 +131,7 @@ details ul{margin:0 0 10px;padding-left:20px}
 .path{display:flex;flex-direction:column;gap:14px;margin-top:16px;counter-reset:p}
 .pstep{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
 .pstep .n{width:40px;height:40px;border-radius:50%;background:var(--brown);color:var(--cream);display:grid;place-items:center;font:500 18px Georgia,serif}
+.pstep>div{min-width:0}
 .pstep h3{margin:6px 0 4px}
 .pstep p{margin:0 0 8px;font-size:15px}
 .term{background:#2b1f1a;color:#f6ead2;border-radius:14px;overflow:hidden;margin:6px 0 4px}
@@ -143,6 +144,23 @@ details ul{margin:0 0 10px;padding-left:20px}
 .warn{background:var(--butter);border-radius:12px;padding:10px 12px;font-size:14px}
 .tip{font-size:13px;color:var(--muted)}
 @media(max-width:600px){.pstep{grid-template-columns:1fr}.pstep .n{width:34px;height:34px;font-size:15px}}
+.report{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;font-size:13px}
+.rp-head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;font-size:15px;color:var(--brown)}
+.rp-sub{margin:6px 0 12px;color:var(--muted)}
+.rp-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:12px}
+.rp-kpis div{background:var(--cream);border-radius:12px;padding:8px 10px;color:var(--muted)}
+.rp-kpis b{display:block;font:500 24px Georgia,serif;color:var(--brown)}
+.rp-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+.report table{border-collapse:collapse;width:100%;min-width:760px}
+.report th{background:var(--brown);color:var(--cream);text-align:left;font-size:11px;padding:7px 8px;font-weight:700}
+.report td{border-top:1px solid var(--line);padding:8px;vertical-align:top}
+.report small{color:var(--muted)}
+.new{background:#7fb07a;color:#fff;border-radius:4px;padding:1px 5px;font-size:10px;font-weight:800;margin-right:4px}
+.apply{display:inline-block;background:var(--brown);color:var(--cream);border-radius:6px;padding:2px 7px;font-size:11px;font-weight:700;margin-top:3px}
+.report .go,.report .ok{border-radius:99px;padding:2px 8px;font-weight:800;font-size:11px;white-space:nowrap}
+.report .go{background:var(--okbg);color:#2f5a2c}.report .ok{background:#eef5e6;color:#4b6b3a}
+.rp-foot{margin:10px 0 0;color:var(--muted)}
+@media(max-width:600px){.rp-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:900px){.agents,.crit,.summary{grid-template-columns:1fr}.tools{grid-template-columns:repeat(2,minmax(0,1fr))}.flow{grid-template-columns:1fr}.st .lbl{display:none}.st.on .lbl{display:inline}}
 @media(max-width:600px){.grid{grid-template-columns:1fr}.analysis{grid-template-columns:1fr;justify-items:center}.tasks{width:100%}.tools{grid-template-columns:1fr}.actions .btn{flex:1;justify-content:center}.scale-l{font-size:10px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
@@ -321,24 +339,47 @@ details ul{margin:0 0 10px;padding-left:20px}
     <div class="pstep"><span class="n">3</span><div>
       <h3>Coloque para rodar todo dia</h3>
       <p>Escolha <b>uma</b> ferramenta que rode tarefas agendadas: as Tasks do Grok, as Tarefas do ChatGPT ou um assistente no WhatsApp como o Zapia (quem tem iFood Clube pode ter acesso grátis; confira no app). Cole o arquivo do passo 2 e depois esta ordem:</p>
-      <div class="term"><div class="term-bar"><i></i><i></i><i></i>cole na ferramenta que agenda<button type="button" data-copy="c2">Copiar</button></div><pre id="c2">Rode estas instruções todo dia útil às 8h (horário de Brasília). No fim, mande o resultado para o e-mail <b data-fill="email">[seu e-mail]</b> com o assunto “Radar de vagas | <b data-fill="nome">[seu nome]</b>”. Se não houver vaga nova, não mande e-mail.</pre></div>
+      <div class="term"><div class="term-bar"><i></i><i></i><i></i>cole na ferramenta que agenda<button type="button" data-copy="c2">Copiar</button></div><pre id="c2">Rode estas instruções todo dia útil às 8h (horário de Brasília). No fim, mande o resultado para o e-mail <b data-fill="email">[seu e-mail]</b> com o assunto “Radar de vagas | <b data-fill="nome">[seu nome]</b>”, no corpo do e-mail e em PDF. Se não houver vaga nova, não mande e-mail.</pre></div>
       <p class="tip">Faça um teste antes: peça “rode agora, só desta vez” e veja se o e-mail chega.</p>
     </div></div>
     <div class="pstep"><span class="n">4</span><div>
-      <h3>Separe os relatórios no seu e-mail</h3>
-      <p>No Gmail, cole o texto abaixo na barra de busca, clique no ícone de filtros (à direita da busca) → <b>Criar filtro</b> → marque <b>Aplicar o marcador</b> → crie o marcador “Radar de vagas”. Assim nada se perde no meio de outros e-mails.</p>
-      <div class="term"><div class="term-bar"><i></i><i></i><i></i>busca do Gmail<button type="button" data-copy="c3">Copiar</button></div><pre id="c3">subject:"Radar de vagas"</pre></div>
+      <h3>Veja como o relatório chega no seu e-mail</h3>
+      <p>É assim que o meu chega todo dia: números no topo, as melhores vagas primeiro e uma tabela por área, cada vaga com o botão de candidatura, o porquê de combinar com você e o que falta.</p>
+      <div class="report" aria-label="Exemplo fictício de relatório">
+        <div class="rp-head"><b>Radar de vagas | <span data-fill="nome">[seu nome]</span> | 30/10</b><span class="tag">exemplo fictício</span></div>
+        <p class="rp-sub">1ª rodada. Gerente e Coordenação de Customer Success e CX. Remoto ou híbrido em São Paulo. Vagas publicadas nos últimos 15 dias.</p>
+        <div class="rp-kpis"><div><b>12</b>vagas abertas</div><div><b>4</b>candidatar já</div><div><b>8</b>boas</div><div><b>3</b>novas hoje</div></div>
+        <div class="rp-scroll"><table><thead><tr><th>Vaga · Empresa</th><th>Modelo · Local</th><th>Data</th><th>Nota</th><th>Por que combina</th><th>Lacunas</th><th>Status</th></tr></thead><tbody>
+          <tr><td><span class="new">NOVA</span> Gerente de Customer Success<br><span class="apply">Candidatar-se ↗</span> <small>gupy.io/…</small><br><small>Empresa de software (confidencial)</small></td><td>Híbrido 2x · São Paulo</td><td>28/10</td><td><span class="go">Candidatar já</span></td><td>8 anos em CS B2B; reduziu cancelamento em 12%</td><td>Pede espanhol (diferencial)</td><td>Aberta, verificada em 30/10</td></tr>
+          <tr><td><span class="new">NOVA</span> Coordenadora de CX<br><span class="apply">Candidatar-se ↗</span> <small>linkedin.com/jobs/…</small><br><small>Varejo de moda</small></td><td>Remoto · Brasil</td><td>≈27/10</td><td><span class="ok">Boa</span></td><td>Liderou time de 5; usa Zendesk</td><td>Pede SQL básico</td><td>Aberta, verificada em 30/10</td></tr>
+        </tbody></table></div>
+        <p class="rp-foot">No fim: Removidas e encerradas · Relatório de cobertura (quais sites foram e quais não foram pesquisados).</p>
+      </div>
     </div></div>
     <div class="pstep"><span class="n">5</span><div>
+      <h3>Separe os relatórios no seu e-mail</h3>
+      <p>No Gmail, cole o texto abaixo na barra de busca, clique no ícone de filtros (à direita da busca) → <b>Criar filtro</b> → marque <b>Aplicar o marcador</b> → crie o marcador “Radar de vagas”.</p>
+      <div class="term"><div class="term-bar"><i></i><i></i><i></i>busca do Gmail<button type="button" data-copy="c3">Copiar</button></div><pre id="c3">subject:"Radar de vagas"</pre></div>
+    </div></div>
+    <div class="pstep"><span class="n">6</span><div>
+      <h3>Deixe os logins prontos e seguros</h3>
+      <p>Antes de qualquer assistente se candidatar por você, entre você mesma nos sites e deixe tudo protegido:</p>
+      <ul class="checklist"><li>Crie (ou recupere) a conta nos sites onde você mais se candidata: LinkedIn, Gupy, Indeed, InfoJobs, Catho, Vagas.com.br e Sólides.</li><li>Use uma <b>senha diferente em cada site</b>, guardada num gerenciador de senhas (o do Google, do iPhone ou outro de confiança).</li><li>Ligue a <b>verificação em duas etapas</b> no e-mail e no LinkedIn.</li><li>Deixe o navegador do computador já logado; o assistente usa essas sessões.</li><li><b>Nunca</b> cole senha ou código de verificação numa conversa com IA.</li></ul>
+      <div class="term"><div class="term-bar"><i></i><i></i><i></i>cole no assistente de candidaturas<button type="button" data-copy="c6">Copiar</button></div><pre id="c6">Use só as contas em que eu já estou logada no navegador.
+Se algum site pedir senha, código ou criar conta nova: pare e me avise. Nunca me peça senha pela conversa.</pre></div>
+    </div></div>
+    <div class="pstep"><span class="n">7</span><div>
       <h3>(Opcional) Um assistente lê o e-mail e se candidata</h3>
-      <p>Eu uso o Instinct: ele lê o relatório que chega no e-mail e faz as candidaturas. Qualquer assistente que leia o seu e-mail e preencha formulários serve. Dê a ele esta regra:</p>
-      <div class="term"><div class="term-bar"><i></i><i></i><i></i>cole no assistente de candidaturas<button type="button" data-copy="c4">Copiar</button></div><pre id="c4">Quando chegar um e-mail com o assunto “Radar de vagas”, abra só as vagas com nota “Candidatar já”.
-Para cada uma: abra o link original, confira se ainda está aberta e prepare a candidatura com o meu currículo, sem inventar nada.
+      <p>Eu uso o <b>Instinct</b>, que é gratuito: ele entra no meu e-mail, confere as respostas das empresas (convites, testes, recusas) e segue só com as vagas a que eu ainda não me candidatei. Qualquer assistente que leia o seu e-mail e preencha formulários serve. Dê a ele esta regra:</p>
+      <div class="term"><div class="term-bar"><i></i><i></i><i></i>cole no assistente de candidaturas<button type="button" data-copy="c4">Copiar</button></div><pre id="c4">Quando chegar um e-mail com o assunto “Radar de vagas”:
+1. Leia também as respostas das empresas no meu e-mail (convites, testes, recusas, prazos) e me avise do que for importante.
+2. Compare com as candidaturas que já fiz e pule essas vagas.
+3. Nas vagas novas com nota “Candidatar já”: abra o link original, confira se ainda está aberta e prepare a candidatura com o meu currículo, sem inventar nada.
 Primeiras 2 semanas: NÃO envie. Me mostre o que preparou para eu aprovar.
 Nunca pague, nunca crie conta nova e nunca responda recrutador por mim.</pre></div>
       <p class="warn"><b>Comece devagar.</b> Nas duas primeiras semanas, deixe o assistente só preparar, e você envia. Quando confiar, libere o envio automático apenas para as vagas “Candidatar já”.</p>
     </div></div>
-    <div class="pstep"><span class="n">6</span><div>
+    <div class="pstep"><span class="n">8</span><div>
       <h3>Uma vez por semana, 10 minutos de ajuste</h3>
       <p>Veja a planilha de candidaturas e pergunte ao agente:</p>
       <div class="term"><div class="term-bar"><i></i><i></i><i></i>cole na conversa do agente<button type="button" data-copy="c5">Copiar</button></div><pre id="c5">Olhando a última semana: quais vagas você descartou e por quê? Tem algum filtro meu que está tirando vaga boa? E quais candidaturas estão há 15 dias sem resposta?</pre></div>
@@ -440,7 +481,7 @@ function buildPrompt(){var nome=v('nome')||'a pessoa candidata';var cid=v('cidad
  S('Onde procurar');t.push('a) Portais: LinkedIn Vagas, Gupy, Indeed, Vagas.com.br, InfoJobs, Catho, Glassdoor, Sólides, InHire e outros que encontrar.');t.push('b) Sistemas de recrutamento das empresas, com buscas do tipo: "cargo" site:gupy.io, site:boards.greenhouse.io, site:jobs.lever.co, site:jobs.ashbyhq.com, site:myworkdayjobs.com, site:inhire.app, site:vagas.solides.com.br.');t.push('c) Páginas “Trabalhe conosco” / “Carreiras” das empresas.'+(v('empresas')?' Priorize: '+v('empresas')+'.':''));t.push('d) Publicações do LinkedIn (aba Publicações), de recrutadores, gestores e empresas: "estamos contratando", "vaga aberta", "hiring", junto com o cargo.');t.push('e) Google e Bing, em português e inglês, com aspas, OR e after:AAAA-MM-DD.');
  if(ag==='olheira'){t.push('f) Sinais de contratação: notícias e posts recentes de empresas que vão crescer o time na minha área. Sinal NÃO é vaga: registre empresa, o que indica, data e link, e acompanhe.')}
  S('Como trabalhar em cada execução');t.push('1. Descobrir: busque em todas as fontes acima com várias combinações de cargo, nível e local.');t.push('2. Validar: abra cada vaga e confirme título, nível, local, modelo, data, requisitos e link original.');t.push('3. Juntar: elimine repetidas (mesmo título, empresa e local). Prefira o link do site da empresa.');t.push('4. Dar nota a cada vaga:');crit.forEach(function(c){t.push('   - '+c[0]+': '+c[1])});t.push('5. Entregar só “Candidatar já” e “Boa”, nesta ordem. Liste “Talvez” separado, em poucas linhas.');
- S('Como me mostrar cada vaga');t.push('Cargo | Empresa (se divulgada) | Modelo e local | Contratação e salário (se divulgados) | Data | Nota | Por que combina comigo | O que pode faltar | Fonte | Link original | Status (aberta e confirmada / precisa confirmar).');
+ S('Como montar o relatório');t.push('No topo: título “Radar de vagas | '+(v('nome')||'meu nome')+' | data”, uma linha com o que foi buscado e quadrinhos com os números: vagas abertas, quantas com nota “Candidatar já”, quantas “Boa” e quantas por área.');t.push('Depois: “Melhores oportunidades” (as 5 melhores) e uma tabela para cada área de cargo.');t.push('Colunas: Vaga + botão “Candidatar-se ↗” com o link curto escrito ao lado + Empresa (se divulgada) | Modelo e local | Contrato e salário (só se divulgados) | Data | Nota | Por que combina comigo (com fatos do meu histórico) | Lacunas (o que a vaga pede e eu não tenho) | Fonte | Status (aberta e verificada em DD/MM / precisa confirmar).');t.push('Marque NOVA nas vagas que apareceram pela primeira vez. No fim: “Removidas e encerradas” e o relatório de cobertura.');t.push('Se conseguir, mande também em PDF (A3 deitado), com as tabelas sem cortar e o cabeçalho repetido em cada página.');
  if(ag==='radar'){S('Controle das minhas candidaturas');t.push('Use a planilha “Controle de Candidaturas” (colunas: '+COLS.join(', ')+'), se você tiver acesso. Não repita vagas que já estão nela.');t.push('Avise candidaturas com 15 dias sem resposta e sugira revisar o status depois de 30 dias.');t.push('Se tiver acesso ao meu e-mail, procure respostas de recrutadores: entrevistas, testes, recusas e prazos. Não responda nada sozinho.')}
  S('Entrega');if(porEmail)t.push('Mande um único relatório para '+email+' com o assunto “Radar de vagas | '+(v('nome')||'Meu radar')+'”. Se não houver nada novo, não mande e-mail vazio.');else t.push('Responda aqui na conversa, começando pelos destaques do dia. Se não houver nada novo, diga isso em uma linha.');t.push('Ordem: '+(ag==='radar'?'respostas de recrutadores e prazos; ':'')+'vagas “Candidatar já”; vagas “Boa”; “Talvez”'+(ag==='olheira'?'; sinais de contratação':'')+(ag==='radar'?'; candidaturas esperando retorno':'')+'; relatório de cobertura.');t.push('Rotina sugerida: dias úteis às 8h (horário de Brasília), se houver agendamento.');
  S('Relatório de cobertura (sempre no fim)');t.push('Quais sites você realmente pesquisou, quais não conseguiu abrir e por quê, quantas vagas olhou, quantas descartou e por qual motivo (nível, modelo, local, idioma, data, repetida).');
