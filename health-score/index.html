@@ -297,7 +297,7 @@ details ul{margin:0 0 10px;padding-left:20px}
 'use strict';
 var $=function(id){return document.getElementById(id)};
 var STEPS=['Negócio','Entrevista','Dados','Medir','Forma','Textos'];
-var TIPOS=['Plataforma ou software','Escola ou mentoria','Serviço ou agência','Assinatura ou e-commerce','Outro'];
+var TIPOS=['SaaS B2B (software para empresas)','Serviço B2B ou agência','Plataforma para pessoas (B2C)','Escola ou mentoria','Assinatura ou e-commerce','Outro'];
 var CICLOS=['Mensal','Anual','Por projeto','Por aula ou sessão'];
 var PORTES=['Até 30','31 a 200','Mais de 200'];
 var HIST=['Sim, completo','Parcial','Não tenho'];
@@ -314,12 +314,12 @@ var SOURCES=[
  {id:'entregas',label:'Entregas ou resultados do cliente',ex:'ex.: planilha de entregas, banco de projetos'}
 ];
 var VECS=[
- {id:'risco',label:'Risco de saída',desc:'Sinais de que o cliente vai sair.',peso:2,tipos:[0,1,2,3,4]},
- {id:'uso',label:'Uso do produto',desc:'Dias ativos e tendência das últimas semanas.',peso:2,tipos:[0,1,3,4]},
- {id:'adocao',label:'Partes do produto ou entregas',desc:'Quantos módulos, áreas ou entregas o cliente já usou ou produziu.',peso:2,tipos:[0,1,2]},
- {id:'valor',label:'Resultado que o cliente vê',desc:'O resultado que ele comprou, medido ou reconhecido.',peso:2,tipos:[0,1,2,3,4]},
- {id:'relacao',label:'Relação com a equipe',desc:'Recebe e age sobre o acompanhamento.',peso:1,tipos:[0,1,2,4]},
- {id:'atrito',label:'Atrito técnico',desc:'Erros e travamentos no produto.',peso:1,tipos:[0]}
+ {id:'risco',label:'Risco de saída',desc:'Sinais de que o cliente vai sair.',peso:2,tipos:[0,1,2,3,4,5]},
+ {id:'uso',label:'Uso do produto',desc:'Dias ativos e tendência das últimas semanas.',peso:2,tipos:[0,2,3,4,5]},
+ {id:'adocao',label:'Partes do produto ou entregas',desc:'Quantos módulos, áreas ou entregas o cliente já usou ou produziu.',peso:2,tipos:[0,1,3]},
+ {id:'valor',label:'Resultado que o cliente vê',desc:'O resultado que ele comprou, medido ou reconhecido.',peso:2,tipos:[0,1,2,3,4,5]},
+ {id:'relacao',label:'Relação com a equipe',desc:'Recebe e age sobre o acompanhamento.',peso:1,tipos:[0,1,3,5]},
+ {id:'atrito',label:'Atrito técnico',desc:'Erros e travamentos no produto.',peso:1,tipos:[0,2]}
 ];
 var state={step:0,tipo:-1,ciclo:-1,porte:-1,hist:-1,forma:null,src:{},vec:{}};
 var DEF_SRC={uso:1,cobranca:1,agenda:0};
@@ -334,7 +334,7 @@ function renderSources(){var box=$('sources');box.innerHTML='';SOURCES.forEach(f
  b.onclick=function(){state.src[s.id]=!state.src[s.id];renderSources()};
  row.appendChild(lab);var wrap=document.createElement('div');wrap.style.display='flex';wrap.style.gap='8px';wrap.style.flexWrap='wrap';wrap.style.alignItems='center';wrap.appendChild(b);wrap.appendChild(inp);row.appendChild(wrap);box.appendChild(row)})}
 
-function defaultVecs(){state.vec={};var t=state.tipo<0?4:state.tipo;VECS.forEach(function(x){if(x.tipos.indexOf(t)>-1)state.vec[x.id]={on:true,peso:x.peso}})}
+function defaultVecs(){state.vec={};var t=state.tipo<0?5:state.tipo;VECS.forEach(function(x){if(x.tipos.indexOf(t)>-1)state.vec[x.id]={on:true,peso:x.peso}})}
 function renderVecs(){if(!Object.keys(state.vec).length)defaultVecs();var box=$('vectors');box.innerHTML='';VECS.forEach(function(x){var st=state.vec[x.id]||{on:false,peso:x.peso};var row=document.createElement('div');row.className='vec';
  var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=st.on?'Medir ✓':'Não medir';b.setAttribute('aria-pressed',st.on);b.setAttribute('aria-label',x.label+': '+(st.on?'medir':'não medir'));
  b.onclick=function(){state.vec[x.id]={on:!st.on,peso:st.peso};renderVecs()};
