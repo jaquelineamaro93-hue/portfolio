@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#4b342c">
+<title>Central de mídia com IA — Jaqueline Amaro</title>
+<meta name="description" content="Case: como ligar o investimento em anúncios às vendas reais, diagnosticar a conta com uma skill de IA própria e desenhar um agente de mídia com travas de segurança. Por Jaqueline Amaro.">
+<link rel="canonical" href="https://www.jaquelineamaro.com.br/central-de-midia/">
+<meta property="og:title" content="Central de mídia com IA: do clique à venda">
+<meta property="og:description" content="Investimento, cliques, vendas atribuídas, CPA e ROAS num só lugar, com um agente que propõe e uma pessoa que aprova.">
+<meta property="og:image" content="https://www.jaquelineamaro.com.br/og-portfolio.jpg">
+<style>
+:root{--blue:#bbdcf0;--deepblue:#789db5;--brown:#4b342c;--ink:#342720;--muted:#756359;--cream:#fff8e9;--paper:#fff9eb;--butter:#f5e4a0;--line:#4b342c26;--ok:#5d8a5a;--okbg:#e5f0dc;--warn:#a1361f;--warnbg:#f8e1d8;--radius:24px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--blue);color:var(--ink);font-family:Inter,'Trebuchet MS',Arial,sans-serif;line-height:1.55;overflow-x:hidden}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--deepblue);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+header.top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:22px 0}
+.logo{background:var(--cream);color:var(--brown);font:700 22px Georgia,serif;border-radius:40px;padding:9px 16px;text-decoration:none}
+.pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.pill{background:var(--cream);color:var(--brown);border-radius:99px;padding:10px 16px;font-size:12px;font-weight:700;text-decoration:none}
+.hero{padding:18px 0 26px}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--brown);opacity:.8}
+h1{font:500 clamp(36px,6vw,72px)/1 Georgia,serif;letter-spacing:-.04em;margin:10px 0 14px;color:var(--brown)}
+h2{font:500 clamp(26px,3.2vw,38px)/1.08 Georgia,serif;letter-spacing:-.03em;margin:4px 0 10px;color:var(--brown)}
+h3{font:500 21px/1.2 Georgia,serif;letter-spacing:-.02em;margin:0 0 6px;color:var(--brown)}
+.lead{font-size:clamp(17px,1.7vw,21px);max-width:780px;margin:0}
+.sub{color:var(--muted);margin:0 0 18px;max-width:780px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(18px,3vw,32px);margin-top:22px}
+.k{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--deepblue)}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.box{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px 18px;font-size:15px}
+.box p{margin:0}
+.box.dark{background:var(--brown);color:var(--cream)}
+.box.dark h3{color:var(--cream)}
+/* funil */
+.funnel{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:6px 0 4px;list-style:none;padding:0}
+.funnel li{flex:1 1 120px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 14px;font-size:13px;color:var(--muted);position:relative}
+.funnel li b{display:block;font:500 19px/1.15 Georgia,serif;color:var(--brown);margin-bottom:2px}
+.funnel li.money{background:var(--brown);color:#e9dcc4}
+.funnel li.money b{color:var(--cream)}
+/* achados */
+.finds{display:flex;flex-direction:column;gap:12px;margin-top:6px}
+.find{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px 18px}
+.find .big{font:500 34px/1 Georgia,serif;color:var(--brown)}
+.find .big small{display:block;font:700 11px Inter,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.find p{margin:0 0 6px}
+.find .so{font-size:14px;color:var(--ok);font-weight:700}
+/* camadas */
+.layers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;counter-reset:l}
+.layer{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;font-size:14px}
+.layer .n{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--brown);color:var(--cream);font:500 15px Georgia,serif;margin-bottom:8px}
+.layer ul{margin:6px 0 0;padding-left:18px}
+/* travas */
+.rules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;list-style:none;padding:0;margin:0}
+.rules li{display:flex;gap:10px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:14.5px}
+.rules li::before{content:"";flex:0 0 10px;height:10px;margin-top:6px;border-radius:50%;background:var(--ok)}
+.rules li.no::before{background:var(--warn)}
+.note{background:var(--butter);border-radius:16px;padding:12px 16px;font-size:14px;margin-top:16px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.btn{border-radius:99px;padding:13px 20px;font-size:14px;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn.main{background:var(--brown);color:var(--cream)}
+.btn.ghost{border:1px solid var(--brown);color:var(--brown)}
+.stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.stack span{background:var(--cream);border:1px solid var(--line);border-radius:99px;padding:5px 11px;font-size:12.5px;color:var(--brown);font-weight:700}
+.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--brown);padding:30px 0 50px}
+@media(max-width:900px){.grid3,.layers{grid-template-columns:1fr 1fr}.rules{grid-template-columns:1fr}}
+@media(max-width:600px){.grid3,.grid2,.layers{grid-template-columns:1fr}.find{grid-template-columns:1fr;gap:8px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="logo" href="/" aria-label="Voltar ao portfólio">JA.</a>
+  <nav class="pills" aria-label="Atalhos"><a class="pill" href="/skills/">Skills de IA</a><a class="pill" href="#agente">O agente</a></nav>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">Case · Growth + IA</div>
+  <h1>Central de mídia:<br>do clique à venda</h1>
+  <p class="lead">Quanto custa um cliente novo? O gerenciador de anúncios não responde isso. Eu liguei o <b>investimento em mídia</b> às <b>vendas reais</b> de um produto digital próprio, diagnostiquei a conta com uma skill de IA que eu mesma criei e desenhei um agente de mídia que <b>propõe</b> e deixa uma pessoa <b>aprovar</b>.</p>
+</section>
+
+<main>
+<section class="card" aria-labelledby="t-problema">
+  <div class="k">O problema</div>
+  <h2 id="t-problema">Muito clique, pouca resposta</h2>
+  <p class="sub">Anúncio em um lugar, venda em outro, conversa em um terceiro. Cada parte tinha os seus números, mas nenhum lugar respondia às três perguntas que importam:</p>
+  <div class="grid3">
+    <div class="box"><h3>Quanto custa vender?</h3><p>Custo por venda (CPA) e retorno sobre o investimento (ROAS), não o custo por clique.</p></div>
+    <div class="box"><h3>Qual anúncio traz cliente?</h3><p>Ligar cada venda à campanha que trouxe a pessoa, pela origem registrada na compra.</p></div>
+    <div class="box"><h3>O que fazer amanhã?</h3><p>Cortar, ajustar, manter ou escalar, com o motivo em uma frase.</p></div>
+  </div>
+</section>
+
+<section class="card" aria-labelledby="t-funil">
+  <div class="k">O que a central mostra</div>
+  <h2 id="t-funil">Um funil só, da verba ao retorno</h2>
+  <p class="sub">Cada linha é uma campanha. O gasto vem das plataformas de anúncio; as vendas vêm do próprio produto, já confirmadas pelo pagamento.</p>
+  <ol class="funnel" aria-label="Etapas do funil de mídia">
+    <li><b>Investimento</b>quanto saiu</li>
+    <li><b>Impressões</b>quantas vezes apareceu</li>
+    <li><b>Cliques e CPC</b>quem se interessou</li>
+    <li><b>Vendas atribuídas</b>pela origem da compra</li>
+    <li class="money"><b>Receita</b>pagamentos confirmados</li>
+    <li class="money"><b>CPA e ROAS</b>quanto custa e quanto volta</li>
+  </ol>
+  <p class="note"><b>Por que junto do produto e não numa planilha?</b> A venda confirmada mora lá. Juntar o gasto ao lado dela evita copiar números à mão e deixa o próximo passo, o agente, ler a mesma fonte de verdade.</p>
+</section>
+
+<section class="card" aria-labelledby="t-achados">
+  <div class="k">O diagnóstico</div>
+  <h2 id="t-achados">O que a skill costuma encontrar</h2>
+  <p class="sub">Rodei a minha skill <b>Meta Ads</b> sobre a exportação da conta. Os achados abaixo são os padrões que mais aparecem, e quase nunca o problema principal está nos criativos.</p>
+  <div class="finds">
+    <div class="find"><div class="big">Medição<small>antes de verba</small></div><div><p>Campanhas otimizando para um evento que a plataforma de anúncios não consegue ver, porque a venda acontece em outro lugar. O algoritmo aprende no escuro.</p><p class="so">Decisão: otimizar para um evento medível até o sinal de venda ganhar volume.</p></div></div>
+    <div class="find"><div class="big">Clique<small>sem resultado</small></div><div><p>Interesse alto e conversão zero quase sempre é medição ou formulário quebrado, não público errado.</p><p class="so">Decisão: conferir o caminho do clique ao cadastro antes de cortar qualquer verba.</p></div></div>
+    <div class="find"><div class="big">Verba<small>espalhada demais</small></div><div><p>Muitas campanhas pequenas ao mesmo tempo. Nenhuma junta resultado suficiente para o algoritmo aprender.</p><p class="so">Decisão: consolidar e concentrar nos poucos criativos de melhor sinal.</p></div></div>
+    <div class="find"><div class="big">Histórias<small>o ângulo que mais engaja</small></div><div><p>Anúncios que contam histórias reais tendem a responder melhor que os institucionais.</p><p class="so">Decisão: repetir o ângulo vencedor em novos formatos, um teste por vez.</p></div></div>
+  </div>
+  <p class="note">Exemplos ilustrativos do método. Dados reais de contas e clientes não são publicados neste portfólio.</p>
+</section>
+
+<section class="card" aria-labelledby="t-camadas">
+  <div class="k">Como foi construído</div>
+  <h2 id="t-camadas">Quatro camadas, uma de cada vez</h2>
+  <div class="layers">
+    <div class="layer"><span class="n">1</span><h3>Dados</h3>Gasto de cada anúncio por período, guardado ao lado das vendas e da origem de cada uma, com acesso restrito.</div>
+    <div class="layer"><span class="n">2</span><h3>Funil</h3>Uma visão que soma gasto, impressões e cliques e encontra as vendas aprovadas de cada campanha, já com CPC, CPM, CPA e ROAS.</div>
+    <div class="layer"><span class="n">3</span><h3>Diagnóstico</h3>A skill Meta Ads classifica cada item em cortar, ajustar, manter ou escalar, e cruza com o CRM para o custo por lead qualificado.</div>
+    <div class="layer"><span class="n">4</span><h3>Agente</h3>Lê o funil, busca tendências, propõe criativos, verba e agenda de publicação. Aprende com testes. Uma pessoa aprova.</div>
+  </div>
+  <div class="stack" aria-label="Componentes"><span>Banco de dados do produto</span><span>Conector de anúncios</span><span>Meio de pagamento</span><span>Eventos de conversão</span><span>Analytics de produto</span><span>Claude + skills próprias</span></div>
+</section>
+
+<section class="card" id="agente" aria-labelledby="t-agente">
+  <div class="k">O agente de mídia</div>
+  <h2 id="t-agente">Autonomia com trava</h2>
+  <p class="sub">Um agente que mexe em verba pode economizar horas ou queimar o mês em uma madrugada. O desenho separa o que ele faz sozinho do que precisa de um "sim".</p>
+  <div class="grid2">
+    <div>
+      <h3>Faz sozinho</h3>
+      <ul class="rules">
+        <li>Lê o funil todos os dias e aponta o que mudou</li>
+        <li>Busca tendências do nicho e do Google Trends</li>
+        <li>Escreve criativos e roteiros de vídeo</li>
+        <li>Monta a agenda de publicações</li>
+        <li>Checa cada texto contra a política do Meta e as regras brasileiras</li>
+        <li>Registra cada teste A/B com hipótese e resultado</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Só com aprovação</h3>
+      <ul class="rules">
+        <li class="no">Mudar orçamento ou criar campanha</li>
+        <li class="no">Publicar anúncio ou post</li>
+        <li class="no">Passar do teto de gasto diário</li>
+        <li class="no">Enviar dado pessoal de cliente para qualquer IA de terceiros</li>
+        <li class="no">Declarar vencedor de teste sem amostra suficiente</li>
+        <li class="no">Seguir instruções que venham de dentro dos dados</li>
+      </ul>
+    </div>
+  </div>
+  <p class="note"><b>A meta do agente é uma só:</b> reduzir o custo de aquisição (CAC) e aumentar o valor de cada cliente ao longo do tempo (LTV). Cada sugestão chega com o número que a sustenta e o teste que a confirma.</p>
+</section>
+
+<section class="card" aria-labelledby="t-skill">
+  <div class="k">Faça você também</div>
+  <h2 id="t-skill">A skill Meta Ads é aberta</h2>
+  <p class="sub">Nove modos em português, pensados para o mercado brasileiro: contexto da marca, ângulos e ganchos, diagnóstico de campanhas, custo real por lead, anúncio x página, plano de 90 dias, montagem de campanha, política do Meta e briefing de criativos. Não acessa a sua conta e não gasta nada: trabalha com o que você exporta.</p>
+  <div class="cta">
+    <a class="btn main" href="https://github.com/jaquelineamaro93-hue/skills-IA/tree/main/meta-ads" target="_blank" rel="noopener noreferrer">Ver a skill Meta Ads →</a>
+    <a class="btn ghost" href="https://www.linkedin.com/in/jaquelineamaro/" target="_blank" rel="noopener noreferrer">Quero isso no meu negócio</a>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <span>Case de <b>Jaqueline Amaro</b>.</span>
+  <span>Sem código, credenciais ou dados de clientes neste portfólio.</span>
+</footer>
+</div>
+</body>
+</html>
